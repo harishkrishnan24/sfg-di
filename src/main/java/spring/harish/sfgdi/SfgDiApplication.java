@@ -4,16 +4,16 @@ import com.sun.security.jgss.GSSUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import spring.harish.sfgdi.controllers.ConstructorInjectedController;
-import spring.harish.sfgdi.controllers.MyController;
-import spring.harish.sfgdi.controllers.PropertyInjectedController;
-import spring.harish.sfgdi.controllers.SetterInjectedController;
+import spring.harish.sfgdi.controllers.*;
 
 @SpringBootApplication
 public class SfgDiApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
 
         System.out.println("****** Primary ******");
         MyController myController = (MyController) ctx.getBean("myController");
